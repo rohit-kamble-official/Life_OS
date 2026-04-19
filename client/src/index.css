@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    @apply bg-gray-950 text-gray-100 font-body antialiased;
+    background: #050510;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(0, 229, 255, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #0a0a1a; }
+  ::-webkit-scrollbar-thumb { background: #00e5ff30; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #00e5ff60; }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  
+  .glass-strong {
+    background: rgba(0, 229, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+  }
+
+  .neon-text { 
+    color: #00e5ff;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 20px rgba(0, 229, 255, 0.3);
+  }
+
+  .neon-border { 
+    border-color: #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2), inset 0 0 10px rgba(0, 229, 255, 0.05);
+  }
+
+  .btn-cyber {
+    @apply px-4 py-2 rounded-lg font-display font-semibold text-sm transition-all duration-200;
+    background: linear-gradient(135deg, #00e5ff20, #00e5ff10);
+    border: 1px solid #00e5ff40;
+    color: #00e5ff;
+  }
+  .btn-cyber:hover {
+    background: linear-gradient(135deg, #00e5ff30, #00e5ff20);
+    border-color: #00e5ff;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-display font-semibold text-sm transition-all duration-200;
+    background: linear-gradient(135deg, #00e5ff, #0070ff);
+    color: #000;
+    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 4px 30px rgba(0, 229, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .input-cyber {
+    @apply w-full px-4 py-3 rounded-xl text-white text-sm outline-none transition-all duration-200 font-body;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .input-cyber:focus {
+    border-color: #00e5ff40;
+    box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.1);
+    background: rgba(0, 229, 255, 0.03);
+  }
+  .input-cyber::placeholder { color: rgba(255,255,255,0.25); }
+
+  .card {
+    @apply rounded-2xl p-5 transition-all duration-200;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .card:hover { border-color: rgba(0, 229, 255, 0.2); }
+
+  .progress-bar {
+    @apply h-2 rounded-full overflow-hidden;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-700;
+    background: linear-gradient(90deg, #00e5ff, #0070ff);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+  }
+}
+
+/* Floating particles background effect */
+.particles::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    radial-gradient(1px 1px at 20% 30%, rgba(0,229,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 70%, rgba(139,92,246,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 50%, rgba(0,229,255,0.2) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}

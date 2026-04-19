@@ -1,0 +1,21 @@
+# Environment variables (VERY IMPORTANT)
+.env
+
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build folders
+dist/
+build/
+
+# Uploads (optional - if you don’t want proofs in repo)
+server/uploads/
