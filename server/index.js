@@ -57,18 +57,24 @@ app.use('/api/reports', reportRoutes);
 
 
 // ==============================
-// ✅ SEO ROUTES (IMPORTANT)
+// ✅ SEO ROUTES (FINAL FIX)
 // ==============================
 
-// Sitemap
+// Sitemap (FIXED CONTENT-TYPE)
 app.get('/sitemap.xml', (req, res) => {
-  res.setHeader('Content-Type', 'application/xml');
+  res.type('application/xml'); // ✅ IMPORTANT FIX
 
-  res.send(`<?xml version="1.0" encoding="UTF-8"?>
+  res.status(200).send(`<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
       <loc>https://life-os-1-zcw0.onrender.com/</loc>
       <priority>1.0</priority>
+    </url>
+    <url>
+      <loc>https://life-os-1-zcw0.onrender.com/login</loc>
+    </url>
+    <url>
+      <loc>https://life-os-1-zcw0.onrender.com/signup</loc>
     </url>
   </urlset>`);
 });
@@ -76,7 +82,7 @@ app.get('/sitemap.xml', (req, res) => {
 
 // Robots.txt
 app.get('/robots.txt', (req, res) => {
-  res.setHeader('Content-Type', 'text/plain');
+  res.type('text/plain');
 
   res.send(`User-agent: *
 Allow: /
