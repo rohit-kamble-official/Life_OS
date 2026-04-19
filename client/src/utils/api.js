@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://life-os-02q9.onrender.com/api',
+  baseURL: `${import.meta.env.VITE_API_URL}/api`,
   withCredentials: true
 });
 
+// Attach token
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('lifeos_token');
   if (token) {
@@ -13,15 +14,16 @@ api.interceptors.request.use(config => {
   return config;
 });
 
+// Handle auth errors
 api.interceptors.response.use(
-  response => response,
-  error => {
-    if (error.response?.status === 401) {
+  res => res,
+  err => {
+    if (err.response?.status === 401) {
       localStorage.removeItem('lifeos_token');
       localStorage.removeItem('lifeos_user');
       window.location.href = '/login';
     }
-    return Promise.reject(error);
+    return Promise.reject(err);
   }
 );
 
