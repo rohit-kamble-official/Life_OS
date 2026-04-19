@@ -1,12 +1,10 @@
 import axios from 'axios';
 
-// Base URL from Vercel environment variable
 const api = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/api`,
+  baseURL: 'https://life-os-02q9.onrender.com/api',
   withCredentials: true
 });
 
-// Attach JWT token to every request
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('lifeos_token');
   if (token) {
@@ -15,7 +13,6 @@ api.interceptors.request.use(config => {
   return config;
 });
 
-// Handle unauthorized responses (auto logout)
 api.interceptors.response.use(
   response => response,
   error => {
