@@ -18,7 +18,7 @@ export default defineConfig({
     }
   },
 
-  // ✅ REQUIRED for Render
+  // ✅ FIX HERE
   preview: {
     host: true,
     port: process.env.PORT,
