@@ -18,11 +18,11 @@ export default defineConfig({
     }
   },
 
-preview: {
-  host: true,
-  port: process.env.PORT,
-  allowedHosts: [
-    'life-os-1-zcw0.onrender.com'
-  ]
-}
+  preview: {
+    host: true,
+    port: process.env.PORT,
+    allowedHosts: [
+      'life-os-1-zcw0.onrender.com'
+    ]
+  }
 })

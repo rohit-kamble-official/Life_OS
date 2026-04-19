@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://life-os-1-zcw0.onrender.com/sitemap.xml
