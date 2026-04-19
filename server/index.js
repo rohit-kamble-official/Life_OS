@@ -17,18 +17,19 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 
-// ✅ FIXED CORS (PRODUCTION READY)
+// ✅ FINAL CORS FIX
+const allowedOrigins = [
+  'https://life-os-1-zcw0.onrender.com', // ✅ your frontend (IMPORTANT)
+  'http://localhost:5173'
+];
+
 app.use(cors({
   origin: function (origin, callback) {
-    const allowedOrigins = [
-      'https://life-os-pied-two.vercel.app', // your frontend
-      'http://localhost:5173' // local dev
-    ];
-
-    // allow requests with no origin (like Postman)
+    // allow requests with no origin (Postman, mobile apps)
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.log('❌ Blocked by CORS:', origin);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -55,12 +56,11 @@ app.get('/api/health', (_, res) =>
 );
 
 
-// Cron: Weekly report
+// Cron jobs
 cron.schedule('0 20 * * 0', async () => {
   console.log('Running weekly report cron...');
 });
 
-// Cron: Daily reminder
 cron.schedule('0 9 * * *', () => {
   console.log('Daily reminder triggered:', new Date().toISOString());
 });
